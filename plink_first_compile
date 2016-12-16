@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "For this fork of plink-ng, the modules gcc/4.9.2 and ATLAS/3.10.3 should be loaded before running this script on uppmax"
+echo -c "waiting for 5 seconds..."
+sleep 5
+echo "done"
+
 # Download and verify zlib
 EXPECTEDCHECKSUM=a4d316c404ff54ca545ea71a27af7dbc29817088
 curl -O http://zlib.net/zlib-1.2.8.tar.gz
@@ -17,4 +22,4 @@ make
 
 # Compile
 cd ..
-make plink
+make -f Makefile.std plink

@@ -25,9 +25,17 @@ else
 endif
 
 CFLAGS=-Wall -O2
-BLASFLAGS=-L/usr/lib64/atlas -llapack -lcblas -latlas
+#
+# on uppmax, 'module load gcc/4.9.2 ATLAS/3.10.3'
+BLASFLAGS=-llapack -lcblas -latlas
+#BLASFLAGS=-L/usr/lib64/atlas -llapack -lcblas -latlas
+
+# for statically linked zlib
 LINKFLAGS=-lm -lpthread -ldl
-ZLIB=zlib-1.2.8/libz.so.1.2.8
+ZLIB=zlib-1.2.8/libz.a
+# for dynamically linked zlib
+#LINKFLAGS=-lm -lpthread -ldl -Wl,-rpath=$(PWD)/zlib-1.2.8
+#ZLIB=zlib-1.2.8/libz.so.1.2.8
 
 ifeq ($(SYS), MAC)
   GCC_GTEQ_43 := $(shell expr `g++ -dumpversion | sed -e 's/\.\([0-9][0-9]\)/\1/g' -e 's/\.\([0-9]\)/0\1/g' -e 's/^[0-9]\{3,4\}$$/&00/'` \>= 40300)
