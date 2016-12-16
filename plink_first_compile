@@ -1,7 +1,7 @@
 #!/bin/bash
 
-echo "For this fork of plink-ng, the modules gcc/4.9.2 and ATLAS/3.10.3 should be loaded before running this script on uppmax"
-echo -c "waiting for 5 seconds..."
+echo "Modified for UPPMAX.  Load modules gcc/4.9.2 and ATLAS/3.10.3 before running this script"
+echo -n "waiting for 5 seconds..."
 sleep 5
 echo "done"
 
